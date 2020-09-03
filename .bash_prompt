@@ -68,7 +68,7 @@ PS1_GREEN_ESCAPED='\['$TERM_GREEN'\]'
 # In $PS1_DEBUG_ENABLED, the interpret phase is still run by PS1. The echo
 # phase is emulated by wrapping $PS1 in double quotes: ...<<<"'PS1'"...
 unset PS1
-PS1_COLORLESS=$(sed 's/[[:space:]]*$//' <<<"${PS1:-\h:\W \u\\$}")
+PS1_COLORLESS=$(sed 's/[[:space:]]*$//' <<<"${PS1:-\h:\w \u\\$}")
 PS1_SPACING=' '
 PS1=''
 
@@ -114,7 +114,7 @@ __ps1_lolcat_python() {
     | __ps1_color_wrap_non_printing
 }
 __ps1_lolcat() {
-  lolcat-c -f -h 0.8 | __ps1_remove_newline | __ps1_color_wrap_non_printing
+  lolcat-c -f -F 0.8 | __ps1_remove_newline | __ps1_color_wrap_non_printing
 }
 
 # long colored prompt text that go over a line have a line wrap issue.
